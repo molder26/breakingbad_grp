@@ -97,7 +97,7 @@ Paginar los episodios con numero hardcodeado de episodes.
 
 Mejorar el pagina de episodes y que muestre numero de paginas.
 
-Dentro del character mostrar una quote random de ese personaje.
+* Dentro del character mostrar una quote random de ese personaje.
 
 Mostrar un grid con las fotos de los personajes en lugar de solo el nombre.
 

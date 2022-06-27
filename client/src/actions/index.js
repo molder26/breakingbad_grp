@@ -10,9 +10,9 @@ export const GET_DEATH_DETAIL="GET_DEATH_DETAIL"
 export const EMPTY_DEATH_DETAIL="EMPTY_DEATH_DETAIL"
 
 //================================AGREGAR UNA CITA (QUOTE)========================================//
-export function addQuote(){
+export function addQuote(name){
     return function (dispatch){
-        return fetch("http://localhost:3001/quote") // https://www.breakingbadapi.com/api/quote/random Leer MUCHO la documentación de la API a utilizar, esto ahorra tiempo después
+        return fetch(`http://localhost:3001/quote?name=${name}`) // https://www.breakingbadapi.com/api/quote/random Leer MUCHO la documentación de la API a utilizar, esto ahorra tiempo después
         .then(res => res.json())
         .then(json => {
             dispatch({type: ADD_QUOTE, payload: json[0]}) // Atentos a cómo tratar a los arrays, objetos, strings, etc

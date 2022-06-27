@@ -63,7 +63,7 @@ useEffect(() => {
          props.characters ?
          props.characters.map((c)=>
           <li key={c.char_id}>
-            <Link to={`/characters/${c.char_id}`}>
+            <Link to={`/characters/${c.char_id}?name=${c.name}`}>
               {c.name}
             </Link>
           </li>
