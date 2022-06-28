@@ -1,78 +1,106 @@
-import {ADD_QUOTE,GET_CHARACTERS,GET_CHARACTER_DETAIL,EMPTY_CHARACTER_DETAIL,GET_EPISODES, EMPTY_EPISODE_DETAIL, GET_EPISODE_DETAIL, GET_DEATHS, GET_DEATH_DETAIL, EMPTY_DEATH_DETAIL} from '../actions/index'
+import {
+    ADD_QUOTE,
+    GET_CHARACTERS,
+    GET_CHARACTER_DETAIL,
+    EMPTY_CHARACTER_DETAIL,
+    GET_EPISODES,
+    EMPTY_EPISODE_DETAIL,
+    GET_EPISODE_DETAIL,
+    GET_DEATHS,
+    GET_DEATH_DETAIL,
+    EMPTY_DEATH_DETAIL,
+    SET_PAGE,
+    EMPTY_PAGE,
+} from "../actions/index";
 
-const initialState = { //este es nuestro estado global, aca definimos las propiedades que vamos a utilizar para manejar nuestros estados.
+const initialState = {
+    //este es nuestro estado global, aca definimos las propiedades que vamos a utilizar para manejar nuestros estados.
     quote: {},
-    characters:[],
+    characters: [],
     characterDetail: {},
-    episodes:[],
+    episodes: [],
     episodeDetail: {},
     deaths: [],
-    deathDetail: {}
-}
+    deathDetail: {},
+    page: 0,
+};
 
-function rootReducer(state=initialState, action){ // acá reducimos las acciones que despachamos a una sola
-    if(action.type === ADD_QUOTE){
+function rootReducer(state = initialState, action) {
+    // acá reducimos las acciones que despachamos a una sola
+    if (action.type === ADD_QUOTE) {
         return {
             ...state, //spread operator (recomendamos aprender al máximo ES6, es la única clase importante de la primera semana para ustedes)
             quote: action.payload,
-        }
+        };
     }
-    if(action.type===GET_CHARACTERS){
-        return{
-            ...state,
-            characters:action.payload
-        }
-    }
-    if(action.type === GET_CHARACTER_DETAIL){
+    if (action.type === GET_CHARACTERS) {
         return {
             ...state,
-            characterDetail: action.payload
-        }
+            characters: action.payload,
+        };
     }
-    if(action.type === EMPTY_CHARACTER_DETAIL) {
+    if (action.type === GET_CHARACTER_DETAIL) {
         return {
             ...state,
-            characterDetail:{}
-        }
+            characterDetail: action.payload,
+        };
     }
-    if(action.type === GET_EPISODES){
+    if (action.type === EMPTY_CHARACTER_DETAIL) {
         return {
             ...state,
-            episodes: action.payload
-        }
+            characterDetail: {},
+        };
     }
-    if(action.type === EMPTY_EPISODE_DETAIL) {
+    if (action.type === GET_EPISODES) {
         return {
             ...state,
-            episodeDetail:{}
-        }
+            episodes: action.payload,
+        };
     }
-    if(action.type === GET_EPISODE_DETAIL){
+    if (action.type === EMPTY_EPISODE_DETAIL) {
         return {
             ...state,
-            episodeDetail: action.payload
-        }
+            episodeDetail: {},
+        };
     }
-    if(action.type === GET_DEATHS){
+    if (action.type === GET_EPISODE_DETAIL) {
         return {
             ...state,
-            deaths: action.payload
-        }
+            episodeDetail: action.payload,
+        };
     }
-    if(action.type === GET_DEATH_DETAIL){
+    if (action.type === GET_DEATHS) {
         return {
             ...state,
-            deathDetail: action.payload
-        }
+            deaths: action.payload,
+        };
     }
-    if(action.type === EMPTY_DEATH_DETAIL) {
+    if (action.type === GET_DEATH_DETAIL) {
         return {
             ...state,
-            deathDetail:{}
-        }
+            deathDetail: action.payload,
+        };
+    }
+    if (action.type === EMPTY_DEATH_DETAIL) {
+        return {
+            ...state,
+            deathDetail: {},
+        };
+    }
+    if (action.type === SET_PAGE) {
+        return {
+            ...state,
+            page: action.payload,
+        };
+    }
+    if (action.type === EMPTY_PAGE) {
+        return {
+            ...state,
+            page: 0,
+        };
     }
 
-    return state //recordar poner un caso default para evitar errores
+    return state; //recordar poner un caso default para evitar errores
 }
 
 export default rootReducer; // exportamos la función que vamos a recibir en el store, recuerden que debe ser el mismo nombre!
