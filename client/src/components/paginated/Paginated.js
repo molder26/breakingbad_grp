@@ -9,7 +9,7 @@ function Paginated(props) {
         props.setPage(pagina)
       }, [pagina]);
 
-    const totalesHardCoded = { characters: 62, episodes: 102, deaths: 65 };
+    const totalesHardCoded = { characters: 62, episodes: 62, deaths: 65 };
     const paginasTotal = Math.ceil(totalesHardCoded[props.tipo] / 10);
     const { paginaActual } = props;
     

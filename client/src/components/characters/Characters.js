@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
 import "./Characters.css";
-import { emptyPage, getCharacters } from "../../actions";
+import { emptyPage, getCharacters, emptyCharacters } from "../../actions";
 import Paginated from "../paginated/Paginated";
 
 function Characters(props) {
@@ -17,11 +17,13 @@ function Characters(props) {
     //  antes había que crear una clase. Ahora puedes usar un Hook dentro de un componente de función existente.)***
 
     useEffect(() => {
+        props.emptyCharacters();
         props.emptyPage();
     }, []);
 
     useEffect(() => {
         props.getCharacters(query, props.page);
+        console.log(props.page);
     }, [query, props.page]);
 
     /*
@@ -91,6 +93,7 @@ function mapDispatchToProps(dispatch) {
         getCharacters: (query, pagina) =>
             dispatch(getCharacters(query, pagina)),
         emptyPage: () => dispatch(emptyPage()),
+        emptyCharacters: () => dispatch(emptyCharacters()),
     };
 }
 

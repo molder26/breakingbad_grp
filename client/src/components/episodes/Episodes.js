@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-
-import {getEpisodes} from '../../actions';
-
+import {getEpisodes, emptyPage, emptyEpisodes} from '../../actions';
+import Paginated from "../paginated/Paginated";
 import "./Episodes.css";
 
-function Episodes(props) {
-  const [query, setQuery] = useState("")
 
-  // useEffect(()=>{
-  //   props.getEpisodes()
-  // },[])
+function Episodes(props) {
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
-    props.getEpisodes(query)
-  }, [query])
+    props.emptyEpisodes();
+    props.emptyPage();
+}, []);
+
+  useEffect(() => {
+    props.getEpisodes(query, props.page);
+    console.log(props.page);
+  }, [query, props.page]);
 
   const handleChange=(q)=>{ //controlador de eventos || manejador de eventos || disparador de funciones
     setQuery(q);
@@ -51,6 +54,8 @@ function Episodes(props) {
         }):<h1>Loading</h1>
         }
       </ul>
+      <hr />
+      <Paginated paginaActual={props.page} tipo={"episodes"} />
     </div>
   );
 }
@@ -67,7 +72,9 @@ function mapStateToProps(state){
 //Actions
 function mapDispatchToProps(dispatch) {
   return {
-    getEpisodes: (query)=>dispatch(getEpisodes(query))
+    getEpisodes: (query, offset)=>dispatch(getEpisodes(query, offset)),
+    emptyPage: () => dispatch(emptyPage()),
+    emptyEpisodes: () => dispatch(emptyEpisodes()),
   }
 }
 

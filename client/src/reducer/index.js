@@ -1,9 +1,11 @@
 import {
     ADD_QUOTE,
     GET_CHARACTERS,
+    EMPTY_CHARACTERS,
     GET_CHARACTER_DETAIL,
     EMPTY_CHARACTER_DETAIL,
     GET_EPISODES,
+    EMPTY_EPISODES,
     EMPTY_EPISODE_DETAIL,
     GET_EPISODE_DETAIL,
     GET_DEATHS,
@@ -39,6 +41,12 @@ function rootReducer(state = initialState, action) {
             characters: action.payload,
         };
     }
+    if (action.type === EMPTY_CHARACTERS) {
+        return {
+            ...state,
+            characters: [],
+        };
+    }
     if (action.type === GET_CHARACTER_DETAIL) {
         return {
             ...state,
@@ -55,6 +63,12 @@ function rootReducer(state = initialState, action) {
         return {
             ...state,
             episodes: action.payload,
+        };
+    }
+    if (action.type === EMPTY_EPISODES) {
+        return {
+            ...state,
+            episodes: [],
         };
     }
     if (action.type === EMPTY_EPISODE_DETAIL) {

@@ -1,8 +1,10 @@
 export const ADD_QUOTE = "ADD_QUOTE"; //esto es lo que utilizaremos como actions types ("son simplemente strings"), esto lo podemos hacer en archivo aparte(modularizar)
 export const GET_CHARACTERS = "GET_CHARACTERS";
+export const EMPTY_CHARACTERS = "EMPTY_CHARACTERS";
 export const GET_CHARACTER_DETAIL = "GET_CHARACTER_DETAIL";
 export const EMPTY_CHARACTER_DETAIL = "EMPTY_CHARACTER_DETAIL";
 export const GET_EPISODES = "GET_EPISODES";
+export const EMPTY_EPISODES = "EMPTY_EPISODES";
 export const EMPTY_EPISODE_DETAIL = "EMPTY_EPISODE_DETAIL";
 export const GET_EPISODE_DETAIL = "GET_EPISODE_DETAIL";
 export const GET_DEATHS = "GET_DEATHS";
@@ -45,6 +47,14 @@ export function getCharacters(query, pagina) {
     };
 }
 
+//==================================LIMPIEMOS EL ESTADO GLOBAL PARA MÁS PROLIJIDAD "pro"======================================//
+
+export function emptyCharacters() {
+    return function (dispatch) {
+        dispatch({ type: EMPTY_CHARACTERS });
+    };
+}
+
 //==================================OBTENER EL DETALLE DE UN PERSONAJE======================================//
 export function getCharacterDetail(num) {
     return function (dispatch) {
@@ -68,15 +78,23 @@ export function emptyCharacterDetail(num) {
 
 //===============================OBTENEMOS LOS EPISODIOS DE LA API=========================================//
 
-export function getEpisodes(query) {
+export function getEpisodes(query, pagina) {
     return function (dispatch) {
         return fetch(
-            `http://localhost:3001/episodes?name=${query}` // "http://localhost:3001/episodes"
+            `http://localhost:3001/episodes?name=${query}&pagina=${pagina}` // "http://localhost:3001/episodes"
         )
             .then((res) => res.json())
             .then((json) => {
                 dispatch({ type: GET_EPISODES, payload: json });
             });
+    };
+}
+
+//==================================LIMPIEMOS EL ESTADO GLOBAL PARA MÁS PROLIJIDAD "pro"======================================//
+
+export function emptyEpisodes() {
+    return function (dispatch) {
+        dispatch({ type: EMPTY_EPISODES });
     };
 }
 

@@ -6,7 +6,6 @@ exports.getDeathById = async (req, res) => {
 	let { name } = req.params;
 	let names;
 	names = name.split(' ');
-	console.log(names)
 	name = names.length > 2 ? names[0] : name.replaceAll(' ','+');
 	
 	const { data } = await axios(`${URL}death?name=${name}`);

@@ -3,17 +3,17 @@ const axios = require("axios"); // pueden usar axios o fetch
 
 // Acá tenés que poner tu función. Recibimos por query (o no) el nombre de un character en especial
 exports.getEpisodes = async (req, res) => {
-	const { name } = req.query;
+	const { name, pagina } = req.query;
 
 	if (name) {
-		const { data } = await axios(`${URL}episodes`);
+		const { data } = await axios(`${URL}episodes?series=Breaking+Bad`);
 		
 		const allEpisodes = data.filter((e) => e.title.toLowerCase().includes(name.toLowerCase()) || e.episode_id === parseInt(name));
 
 		return res.status(200).send(allEpisodes);
 	}
 
-	const { data } = await axios(`${URL}episodes`);
+	const { data } = await axios(`${URL}episodes?series=Breaking+Bad`);
 
 	const allEpisodes = data.map((e) => {
 		return {
@@ -26,6 +26,11 @@ exports.getEpisodes = async (req, res) => {
 			series: e.series
 		};
 	});
-
+	
+	if (pagina) {
+		const offset = pagina * 10;
+		const limit = offset + 10;
+		return res.status(200).send(allEpisodes.slice(offset, limit));
+	}
 	return res.status(200).send(allEpisodes);
 };
