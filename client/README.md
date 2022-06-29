@@ -89,9 +89,9 @@ GOOD CODING!
 
 # New ideas:
 
-Paginar con numero hardcodeado de characters.
+* Paginar con numero hardcodeado de characters.
 
-Mejorar el pagina de characters y que muestre numero de paginas.
+* Mejorar el pagina de characters y que muestre numero de paginas.
 
 Paginar los episodios con numero hardcodeado de episodes.
 

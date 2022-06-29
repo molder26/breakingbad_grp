@@ -17,13 +17,13 @@ function Characters(props) {
     //  antes había que crear una clase. Ahora puedes usar un Hook dentro de un componente de función existente.)***
 
     useEffect(() => {
-      props.emptyPage();
+        props.emptyPage();
     }, []);
 
     useEffect(() => {
         props.getCharacters(query, props.page);
-      }, [query, props.page]);
-      
+    }, [query, props.page]);
+
     /*
     PISTA:
     La dirección de donde vamos a tomar los datos es
@@ -74,12 +74,6 @@ function Characters(props) {
                 )}
             </ul>
             <hr />
-            {/* {
-        pagina >= 1 
-          ? <button onClick={() => setPagina(pagina - 1)}>Anterior</button>
-          : ''
-      }
-      <button onClick={() => setPagina(pagina + 1)}>Siguiente</button> */}
             <Paginated paginaActual={props.page} tipo={"characters"} />
         </div>
     );
