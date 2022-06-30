@@ -6,7 +6,7 @@ function Paginated(props) {
     const [pagina, setPagina] = useState(0);
 
     useEffect(() => {
-        props.setPage(pagina)
+        props.setPage(pagina);
       }, [pagina]);
 
     const totalesHardCoded = { characters: 62, episodes: 62, deaths: 65 };

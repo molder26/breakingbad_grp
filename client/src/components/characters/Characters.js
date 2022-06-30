@@ -8,6 +8,7 @@ import Paginated from "../paginated/Paginated";
 
 function Characters(props) {
     const [query, setQuery] = useState("");
+    const [pagina, setPagina] = useState(0);
     //aca declaramos un state(estado local) para poder actualizarlo junto con el form que va a ser nuestra suerte de input buscador
     //query es el estado y setQuery el modificador del estado.
 
@@ -18,13 +19,15 @@ function Characters(props) {
 
     useEffect(() => {
         props.emptyCharacters();
-        props.emptyPage();
     }, []);
 
     useEffect(() => {
-        props.getCharacters(query, props.page);
-        console.log(props.page);
-    }, [query, props.page]);
+        setPagina(props.page);
+    }, [props.page]);
+
+    useEffect(() => {
+        props.getCharacters(query, pagina);
+    }, [query, pagina]);
 
     /*
     PISTA:
@@ -76,7 +79,7 @@ function Characters(props) {
                 )}
             </ul>
             <hr />
-            <Paginated paginaActual={props.page} tipo={"characters"} />
+            <Paginated paginaActual={pagina} tipo={"characters"} />
         </div>
     );
 }
