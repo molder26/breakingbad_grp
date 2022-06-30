@@ -1,39 +1,61 @@
-.Characters{
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-  
-}
-.search{
-   
-    font-size: 22px;
+*{
+/* border: solid 2px white; */
 }
 
-.container-card {
+.Characters{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;    
+  }
+  .search{
+    
+    font-size: 22px;
+  }
+  
+  .container-card {
     width: 100%;
     display: flex;
     max-width: 1100px;
     margin: auto;
     flex-wrap: wrap;
     justify-content: center;
+   
   }
   .cards{
-    margin: 30px
+  
+    margin: 30px 10px;
+  
+    /* border: solid 2px white; */
   }
-
+  
   .card {
     width: 100%;
-    margin: 20px;
-    border-radius: 6px;
+        border-radius: 6px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.104);
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
     transition: all 400ms ease-out;
     cursor: default;
-    padding-top: 10px;
-    border: solid 2px
+    padding: 5px;
+    /* border: solid 2px; */  
   }
- 
+ .death{
+  /* position: absolute; */
+  opacity: 0;
+  height: 270px;
+  width: 180px;
+  margin-top: -250px;
+  display: flex;
+  align-items: flex-end;
+justify-content: center;
+transition: all .5s;
+/* border: solid 2px;  */
+}
+  .death:hover{
+    transition: all .5s;
+  opacity: 1;
+
+ }
 
   .card img {
     height: 210px;
@@ -45,6 +67,7 @@
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
     transform: translateY(-3%);
     cursor: pointer;
+   
   }
 
   

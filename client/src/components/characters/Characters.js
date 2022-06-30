@@ -48,6 +48,7 @@ function Characters(props) {
   return (
     <div className="Characters">
       <h1>List of Characters</h1>
+
       <section>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input className="search"
@@ -65,16 +66,19 @@ function Characters(props) {
             props.characters.map((c) =>
               <div key={c.char_id}>
                 <div to={`/characters/${c.char_id}`}>
-                  <div className="cards ">
-                    <div className="card">
                       <Link to={`/characters/${c.char_id}`}>
-                      {c.name}
-                      </Link>
-                    </div>
-                    <div className="card">
-                      <img src={c.img} />
+                  <div className="cards ">
+                    <div className="card ">
+                        {c.name}
+                      <div className="card">
+                        <img src={c.img} />
+                        <div className="death">
+                         {c.estado}</div>
+                      </div>
                     </div>
                   </div>
+                      </Link>
+
                 </div>
               </div>
             )
@@ -83,7 +87,7 @@ function Characters(props) {
 
       </div>
 
-           <div className="paginacion ">
+      <div className="paginacion ">
         {
           pagina >= 1
             ? <button onClick={() => setPagina(pagina - 1)}>👈</button>
@@ -101,7 +105,7 @@ function Characters(props) {
 
         <button onClick={() => setPagina(pagina + 1)}>👉</button>
       </div>
-    </div>
+    </div >
   );
 }
 // Recuerden que el Spinner es un componente que vino de regalito, asi que lo aprovechamos para usarlo y que en caso de demorar la carga, se vea un "loading"

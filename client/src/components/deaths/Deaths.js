@@ -19,10 +19,11 @@ function Deaths(props) {
         {
         props.deaths?
         props.deaths.map((d, index)=>{
-            return <Link key={index} to={`/deaths/${d.death}`}> 
+          return <Link key={index} to={`/deaths/${d.death}`}> 
             <li>
               {d.death}
             </li>
+          
             </Link>
         }):<h1>Loading</h1>
         }
