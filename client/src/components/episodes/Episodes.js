@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getEpisodes, emptyPage, emptyEpisodes } from "../../actions";
+import { getEpisodes, emptyEpisodes } from "../../actions";
 import Paginated from "../paginated/Paginated";
 import "./Episodes.css";
 
@@ -73,7 +73,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         getEpisodes: (query, offset) => dispatch(getEpisodes(query, offset)),
-        emptyPage: () => dispatch(emptyPage()),
         emptyEpisodes: () => dispatch(emptyEpisodes()),
     };
 }

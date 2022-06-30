@@ -3,19 +3,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
 import "./Characters.css";
-import { emptyPage, getCharacters, emptyCharacters } from "../../actions";
+import { getCharacters, emptyCharacters } from "../../actions";
 import Paginated from "../paginated/Paginated";
 
 function Characters(props) {
     const [query, setQuery] = useState("");
     const [pagina, setPagina] = useState(0);
-    //aca declaramos un state(estado local) para poder actualizarlo junto con el form que va a ser nuestra suerte de input buscador
-    //query es el estado y setQuery el modificador del estado.
-
-    //*******QUÉ ES Y PARA QUÉ SIRVE useSTATE / un Hook ********
-    //useState es un hook que te permite añadir el estado de react a un componente de funcion
-    // ***(¿Cuándo debería usar un Hook? Si creas un componente de función y descubres que necesitas añadirle estado,
-    //  antes había que crear una clase. Ahora puedes usar un Hook dentro de un componente de función existente.)***
 
     useEffect(() => {
         props.emptyCharacters();
@@ -24,17 +17,6 @@ function Characters(props) {
     useEffect(() => {
         props.getCharacters(query, pagina);
     }, [query, pagina]);
-
-    /*
-    PISTA:
-    La dirección de donde vamos a tomar los datos es
-    
-    https://www.breakingbadapi.com/api/characters?name=
-
-    Notesé que hay una query en la dirección. Lo que seguirá a esa query será un string 
-    con un nombre o un apellido, y en base a eso la api realizará el filtrado.
-    En caso de no poner nada en la query, la api traerá a todos los personajes.
-  */
 
     const handleChange = (q) => {
         //controlador de eventos || manejador de eventos || disparador de funciones
@@ -91,7 +73,6 @@ function mapDispatchToProps(dispatch) {
     return {
         getCharacters: (query, pagina) =>
             dispatch(getCharacters(query, pagina)),
-        emptyPage: () => dispatch(emptyPage()),
         emptyCharacters: () => dispatch(emptyCharacters()),
     };
 }

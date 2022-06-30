@@ -10,8 +10,6 @@ export const GET_EPISODE_DETAIL = "GET_EPISODE_DETAIL";
 export const GET_DEATHS = "GET_DEATHS";
 export const GET_DEATH_DETAIL = "GET_DEATH_DETAIL";
 export const EMPTY_DEATH_DETAIL = "EMPTY_DEATH_DETAIL";
-export const SET_PAGE = "SET_PAGE";
-export const EMPTY_PAGE = "EMPTY_PAGE";
 
 //================================AGREGAR UNA CITA (QUOTE)========================================//
 export function addQuote(name) {
@@ -152,18 +150,5 @@ export function getDeathDetail(name) {
 export function emptyDeathDetail(name) {
     return function (dispatch) {
         dispatch({ type: EMPTY_DEATH_DETAIL });
-    };
-}
-
-//================================== Establecer la pagina nueva ======================================//
-export function setPage(page) {
-    return function (dispatch) {
-        dispatch({ type: SET_PAGE, payload: page });
-    };
-}
-
-export function emptyPage() {
-    return function (dispatch) {
-        dispatch({ type: EMPTY_PAGE });
     };
 }

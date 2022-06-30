@@ -10,9 +10,7 @@ import {
     GET_EPISODE_DETAIL,
     GET_DEATHS,
     GET_DEATH_DETAIL,
-    EMPTY_DEATH_DETAIL,
-    SET_PAGE,
-    EMPTY_PAGE,
+    EMPTY_DEATH_DETAIL
 } from "../actions/index";
 
 const initialState = {
@@ -99,18 +97,6 @@ function rootReducer(state = initialState, action) {
         return {
             ...state,
             deathDetail: {},
-        };
-    }
-    if (action.type === SET_PAGE) {
-        return {
-            ...state,
-            page: action.payload,
-        };
-    }
-    if (action.type === EMPTY_PAGE) {
-        return {
-            ...state,
-            page: 0,
         };
     }
 
