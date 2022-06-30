@@ -14,15 +14,10 @@ function Episodes(props) {
     }, []);
 
     useEffect(() => {
-        setPagina(props.page);
-    }, [props.page]);
-
-    useEffect(() => {
         props.getEpisodes(query, pagina);
     }, [query, pagina]);
 
     const handleChange = (q) => {
-        //controlador de eventos || manejador de eventos || disparador de funciones
         setQuery(q);
     };
 
@@ -61,7 +56,7 @@ function Episodes(props) {
                 )}
             </ul>
             <hr />
-            <Paginated paginaActual={pagina} tipo={"episodes"} />
+            <Paginated setPagina={ setPagina } paginaActual={ pagina } tipo={ "episodes" } />
         </div>
     );
 }

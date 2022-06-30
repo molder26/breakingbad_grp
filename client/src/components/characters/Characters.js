@@ -22,10 +22,6 @@ function Characters(props) {
     }, []);
 
     useEffect(() => {
-        setPagina(props.page);
-    }, [props.page]);
-
-    useEffect(() => {
         props.getCharacters(query, pagina);
     }, [query, pagina]);
 
@@ -79,7 +75,7 @@ function Characters(props) {
                 )}
             </ul>
             <hr />
-            <Paginated paginaActual={pagina} tipo={"characters"} />
+            <Paginated setPagina={ setPagina } paginaActual={ pagina } tipo={ "characters" } />
         </div>
     );
 }
