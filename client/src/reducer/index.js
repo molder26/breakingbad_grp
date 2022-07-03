@@ -10,7 +10,9 @@ import {
     GET_EPISODE_DETAIL,
     GET_DEATHS,
     GET_DEATH_DETAIL,
-    EMPTY_DEATH_DETAIL
+    EMPTY_DEATH_DETAIL,
+    SHOW_LOADER,
+    HIDE_LOADER,
 } from "../actions/index";
 
 const initialState = {
@@ -22,7 +24,7 @@ const initialState = {
     episodeDetail: {},
     deaths: [],
     deathDetail: {},
-    page: 0,
+    loading: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -97,6 +99,18 @@ function rootReducer(state = initialState, action) {
         return {
             ...state,
             deathDetail: {},
+        };
+    }
+    if (action.type === SHOW_LOADER) {
+        return {
+            ...state,
+            loading: true,
+        };
+    }
+    if (action.type === HIDE_LOADER) {
+        return {
+            ...state,
+            loading: false,
         };
     }
 

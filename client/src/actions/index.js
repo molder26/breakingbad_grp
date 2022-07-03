@@ -10,6 +10,8 @@ export const GET_EPISODE_DETAIL = "GET_EPISODE_DETAIL";
 export const GET_DEATHS = "GET_DEATHS";
 export const GET_DEATH_DETAIL = "GET_DEATH_DETAIL";
 export const EMPTY_DEATH_DETAIL = "EMPTY_DEATH_DETAIL";
+export const SHOW_LOADER = "SHOW_LOADER";
+export const HIDE_LOADER = "HIDE_LOADER";
 
 //================================AGREGAR UNA CITA (QUOTE)========================================//
 export function addQuote(name) {
@@ -35,12 +37,14 @@ export function addQuote(name) {
 
 export function getCharacters(query, pagina) {
     return function (dispatch) {
+        dispatch(showLoader());
         return fetch(
             `http://localhost:3001/characters?name=${query}&pagina=${pagina}`
-        ) // "https://www.breakingbadapi.com/api/characters?name="+query aca estaba el error que vimos en el repaso tenia mal puesta la url(tenia:https://www.breakingbadapi.com/characters?name="+query)
+        )
             .then((res) => res.json())
             .then((json) => {
-                dispatch({ type: GET_CHARACTERS, payload: json }); //recordar que el dispatch lo que hace es enviar un objeto con la propiedad type y payload al reducer.
+                dispatch(hideLoader());
+                dispatch({ type: GET_CHARACTERS, payload: json });
             });
     };
 }
@@ -78,11 +82,13 @@ export function emptyCharacterDetail(num) {
 
 export function getEpisodes(query, pagina) {
     return function (dispatch) {
+        dispatch(showLoader());
         return fetch(
             `http://localhost:3001/episodes?name=${query}&pagina=${pagina}` // "http://localhost:3001/episodes"
         )
             .then((res) => res.json())
             .then((json) => {
+                dispatch(hideLoader());
                 dispatch({ type: GET_EPISODES, payload: json });
             });
     };
@@ -122,11 +128,13 @@ export function getEpisodeDetail(num) {
 
 export function getDeaths() {
     return function (dispatch) {
+        dispatch(showLoader());
         return fetch(
             `http://localhost:3001/deaths` // "http://localhost:3001/episodes"
         )
             .then((res) => res.json())
             .then((json) => {
+                dispatch(hideLoader());
                 dispatch({ type: GET_DEATHS, payload: json });
             });
     };
@@ -150,5 +158,18 @@ export function getDeathDetail(name) {
 export function emptyDeathDetail(name) {
     return function (dispatch) {
         dispatch({ type: EMPTY_DEATH_DETAIL });
+    };
+}
+
+//================================== Manejo del loader ======================================//
+export function showLoader() {
+    return function (dispatch) {
+        dispatch({ type: SHOW_LOADER });
+    };
+}
+
+export function hideLoader() {
+    return function (dispatch) {
+        dispatch({ type: HIDE_LOADER });
     };
 }

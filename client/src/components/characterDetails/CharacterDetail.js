@@ -5,7 +5,7 @@ import {
     addQuote,
 } from "../../actions";
 import { connect } from "react-redux";
-import Spinner from "../Spinner";
+import Spinner from "../spinner/Spinner.js";
 import "./CharacterDetail.css";
 
 function CharacterDetail(props) {

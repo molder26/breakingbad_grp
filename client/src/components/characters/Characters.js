@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Spinner from "../Spinner";
+import Spinner from "../spinner/Spinner.js";
 import "./Characters.css";
-import { getCharacters, emptyCharacters } from "../../actions";
+import {
+    getCharacters,
+    emptyCharacters,
+    showLoader,
+    hideLoader,
+} from "../../actions";
 import Paginated from "../paginated/Paginated";
 
 function Characters(props) {
@@ -15,11 +20,11 @@ function Characters(props) {
     }, []);
 
     useEffect(() => {
+        props.emptyCharacters();
         props.getCharacters(query, pagina);
     }, [query, pagina]);
 
     const handleChange = (q) => {
-        //controlador de eventos || manejador de eventos || disparador de funciones
         setQuery(q);
     };
 
@@ -27,7 +32,6 @@ function Characters(props) {
         event.preventDefault();
     };
 
-    // notarán en el return que los handlers, los enviamos en el form y en el input como una suerte de "gatillos", que disparán TODO.
     return (
         <div className="Characters">
             <h1>List of Characters</h1>
@@ -42,22 +46,30 @@ function Characters(props) {
             </section>
 
             <ul className="Characters__list">
-                {props.characters ? (
-                    props.characters.map((c) => (
-                        <li key={c.char_id}>
-                            <Link
-                                to={`/characters/${c.char_id}?name=${c.name}`}
-                            >
-                                {c.name}
-                            </Link>
-                        </li>
-                    ))
-                ) : (
-                    <Spinner />
-                )}
+                {props.characters
+                    ? props.characters.map((c) => (
+                          <li key={c.char_id}>
+                              <Link
+                                  to={`/characters/${c.char_id}?name=${c.name}`}
+                              >
+                                  {c.name}
+                              </Link>
+                          </li>
+                      ))
+                    : null}
             </ul>
-            <hr />
-            <Paginated setPagina={ setPagina } paginaActual={ pagina } tipo={ "characters" } />
+            {props.loading ? (
+                <Spinner />
+            ) : (
+                <div>
+                    <hr />
+                    <Paginated
+                        setPagina={setPagina}
+                        paginaActual={pagina}
+                        tipo={"characters"}
+                    />
+                </div>
+            )}
         </div>
     );
 }

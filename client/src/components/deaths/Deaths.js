@@ -1,53 +1,50 @@
 import React, { useEffect } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
-import {getDeaths} from '../../actions';
+import { getDeaths } from "../../actions";
+import Spinner from "../spinner/Spinner.js";
 
 import "./Deaths.css";
 
 function Deaths(props) {
+    useEffect(() => {
+        props.getDeaths();
+    }, []);
 
-  useEffect(()=>{
-    props.getDeaths()
-  },[])
-
-  return (
-    <div className="Episodes">
-      <h1>Deaths List</h1>
-      <ul className="Episodes__list">
-        {
-        props.deaths?
-        props.deaths.map((d, index)=>{
-            return <Link key={index} to={`/deaths/${d.death}`}> 
-            <li>
-              {d.death}
-            </li>
-            </Link>
-        }):<h1>Loading</h1>
-        }
-      </ul>
-    </div>
-  );
+    return (
+        <div className="Episodes">
+            <h1>Deaths List</h1>
+            <ul className="Episodes__list">
+                {props.deaths
+                    ? props.deaths.map((d, index) => {
+                          return (
+                              <Link key={index} to={`/deaths/${d.death}`}>
+                                  <li>{d.death}</li>
+                              </Link>
+                          );
+                      })
+                    : null}
+                {props.loading ? <Spinner /> : null}
+            </ul>
+        </div>
+    );
 }
 
 //===========================================//
 
-function mapStateToProps(state){
-  return {
-    ...state
-  }
+function mapStateToProps(state) {
+    return {
+        ...state,
+    };
 }
-
 
 //Actions
 function mapDispatchToProps(dispatch) {
-  return {
-    getDeaths: () => dispatch(getDeaths())
-  }
+    return {
+        getDeaths: () => dispatch(getDeaths()),
+    };
 }
 
 //===========================================//
 
-export default connect (mapStateToProps,mapDispatchToProps)
-(Deaths);
+export default connect(mapStateToProps, mapDispatchToProps)(Deaths);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../../img/logo.png";
 import "./Home.css";
 import {addQuote} from "../../actions";
-import Spinner from "../Spinner";
+import Spinner from "../spinner/Spinner.js";
 import {connect} from "react-redux"
 
 

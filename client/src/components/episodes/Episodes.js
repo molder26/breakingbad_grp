@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getEpisodes, emptyEpisodes } from "../../actions";
 import Paginated from "../paginated/Paginated";
+import Spinner from "../spinner/Spinner.js";
 import "./Episodes.css";
 
 function Episodes(props) {
@@ -14,6 +15,7 @@ function Episodes(props) {
     }, []);
 
     useEffect(() => {
+        props.emptyEpisodes();
         props.getEpisodes(query, pagina);
     }, [query, pagina]);
 
@@ -38,25 +40,33 @@ function Episodes(props) {
                 </form>
             </section>
             <ul className="Episodes__list">
-                {props.episodes ? (
-                    props.episodes.map((episode, index) => {
-                        if (episode.series === "Breaking Bad") {
-                            return (
-                                <Link
-                                    key={index}
-                                    to={`/episodes/${episode.episode_id}`}
-                                >
-                                    <li>{episode.title}</li>
-                                </Link>
-                            );
-                        }
-                    })
-                ) : (
-                    <h1>Loading</h1>
-                )}
+                {props.episodes
+                    ? props.episodes.map((episode, index) => {
+                          if (episode.series === "Breaking Bad") {
+                              return (
+                                  <Link
+                                      key={index}
+                                      to={`/episodes/${episode.episode_id}`}
+                                  >
+                                      <li>{episode.title}</li>
+                                  </Link>
+                              );
+                          }
+                      })
+                    : null}
             </ul>
-            <hr />
-            <Paginated setPagina={ setPagina } paginaActual={ pagina } tipo={ "episodes" } />
+            {props.loading ? (
+                <Spinner />
+            ) : (
+                <div>
+                    <hr />
+                    <Paginated
+                        setPagina={setPagina}
+                        paginaActual={pagina}
+                        tipo={"episodes"}
+                    />
+                </div>
+            )}
         </div>
     );
 }
