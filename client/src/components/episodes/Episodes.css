@@ -1,9 +1,49 @@
-.Episodes {
-  width: 80%;
-  margin: 0 auto;
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
-.Episodes__list {
-  list-style: none;
+.containerSearch {
+  display: flex;
+  justify-content: center;
+  height: 4rem;
+  margin-top: 10px;
+}
+.search {
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+.containerEpisodes {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+}
+
+.card {
+  margin: auto;
+  width: 15rem;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.104);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  transition: all 400ms ease-out;
+  cursor: pointer;
+  padding: 15px;
+  margin: 20px;
+}
+
+.card:hover {
+  background: rgba(250, 231, 231, 0.197);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
