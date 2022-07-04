@@ -16,11 +16,12 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .cards {
   justify-items: center;
 }
 
-.card {    
+.card {
   justify-items: center;
   margin: 20px 5px 20px 5px;
   /* width: 25rem; */
@@ -43,14 +44,20 @@
   transition: all 0.5s;
 
 }
+
 .death:hover {
   transition: all 0.5s;
   opacity: 1;
 }
 
 .card img {
-  height: 210px;
-  overflow: hidden;
+  /* height: 210px;
+  overflow: hidden; */
+
+  max-width:200px;
+  max-height:210px;
+  width: auto;
+  height: auto;
 }
 
 .card:hover {
@@ -78,6 +85,7 @@
   transition: 0.2s Linear;
   text-decoration: none;
 }
+
 .paginacion button {
   background-color: #2fb4cc;
   cursor: pointer;
