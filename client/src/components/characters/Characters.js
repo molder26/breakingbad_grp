@@ -45,19 +45,29 @@ function Characters(props) {
                 </form>
             </section>
 
-            <ul className="Characters__list">
+            <div className="container-card ">
                 {props.characters
                     ? props.characters.map((c) => (
-                          <li key={c.char_id}>
+                          <div key={c.char_id}>
                               <Link
                                   to={`/characters/${c.char_id}?name=${c.name}`}
                               >
-                                  {c.name}
+                                  <div className="cards">
+                                      <div className="card">
+                                          {c.name}
+                                          <div className="card">
+                                              <img src={c.img} />
+                                              <div className="death">
+                                                  {c.estado}
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
                               </Link>
-                          </li>
+                          </div>
                       ))
                     : null}
-            </ul>
+            </div>
             {props.loading ? (
                 <Spinner />
             ) : (
