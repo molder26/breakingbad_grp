@@ -3,12 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Spinner from "../spinner/Spinner.js";
 import "./Characters.css";
-import {
-    getCharacters,
-    emptyCharacters,
-    showLoader,
-    hideLoader,
-} from "../../actions";
+import { getCharacters, emptyCharacters } from "../../actions";
 import Paginated from "../paginated/Paginated";
 
 function Characters(props) {
@@ -54,7 +49,7 @@ function Characters(props) {
                               >
                                   <div className="cards">
                                       <div className="card">
-                                          {c.name}
+                                          <span className="espacio">{c.name}</span>
                                           <div className="card">
                                               <img src={c.img} />
                                               <div className="death">

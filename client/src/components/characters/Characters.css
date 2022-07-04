@@ -22,8 +22,8 @@
 
 .card {    
   justify-items: center;
-  margin: auto;
-  width: 25rem;
+  margin: 20px 5px 20px 5px;
+  /* width: 25rem; */
   border-radius: 6px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.104);
@@ -86,4 +86,8 @@
 .paginacion a:hover {
   background-color: #2fb4cc;
   color: white;
+}
+
+.espacio {
+  margin-top: 5px;
 }

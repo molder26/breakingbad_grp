@@ -2,8 +2,10 @@ import React from "react";
 import "./Spinner.css";
 
 const Spinner = () => {
-    return (
+    return (<>
         <div className="spinner"></div>
+        <h2>Cargando...</h2>
+    </>
     );
 };
 
