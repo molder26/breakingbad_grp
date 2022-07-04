@@ -31,39 +31,29 @@ function CharacterDetail(props) {
 
         <div className="container-detail" >
           <h3 className="name">{props.characterDetail.name}</h3>
-
           <div className="container-cardDetail">
-
             <div className="photo-card face">
               <img className="CharacterDetail__Photo" src={props.characterDetail.img}
                 alt="photo no fount" />
             </div>
-
-
             <div className="text-detail face">
               <p>Nickname: {props.characterDetail.nickname}</p>
               <p>Status: {props.characterDetail.status}</p>
               <p>birthday: {props.characterDetail.birthday}</p>
             </div>
-
           </div>
         </div>
-
-
-
         : <Spinner />
       }
     </div>
   );
 }
 
-
 function mapStateToProps(state) { //recordar que funciona como contraparte del useSelector como para poder usar el estado global en el componente a traves de props
   return {
     ...state
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {

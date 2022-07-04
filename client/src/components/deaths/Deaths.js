@@ -1,31 +1,29 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-
-import {getDeaths} from '../../actions';
-
+import { getDeaths } from '../../actions';
 import "./Deaths.css";
+import Spinner from '../Spinner';
+
 
 function Deaths(props) {
-
-  useEffect(()=>{
+  useEffect(() => {
     props.getDeaths()
-  },[])
+  }, [])
 
   return (
-    <div className="Episodes">
+    <div className="container">
       <h1>Deaths List</h1>
-      <ul className="Episodes__list">
+      <ul className="containerDeaths">
         {
-        props.deaths?
-        props.deaths.map((d, index)=>{
-          return <Link key={index} to={`/deaths/${d.death}`}> 
-            <li>
-              {d.death}
-            </li>
-          
-            </Link>
-        }):<h1>Loading</h1>
+          props.deaths ?
+            props.deaths.map((d, index) => {
+              return <Link key={index} to={`/deaths/${d.death}`}>
+                <div className="card">
+                  {d.death}
+                </div>
+              </Link>
+            }) : <Spinner />
         }
       </ul>
     </div>
@@ -34,7 +32,7 @@ function Deaths(props) {
 
 //===========================================//
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     ...state
   }
@@ -50,5 +48,5 @@ function mapDispatchToProps(dispatch) {
 
 //===========================================//
 
-export default connect (mapStateToProps,mapDispatchToProps)
-(Deaths);
+export default connect(mapStateToProps, mapDispatchToProps)
+  (Deaths);

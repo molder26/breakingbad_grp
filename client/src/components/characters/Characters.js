@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
 import "./Characters.css";
 import { getCharacters } from "../../actions";
-// import { CharacterDetail } from "../characterDetails/CharacterDetail";
+
 
 function Characters(props) {
-
   const [query, setQuery] = useState("")
   const [pagina, setPagina] = useState(0)
   //aca declaramos un state(estado local) para poder actualizarlo junto con el form que va a ser nuestra suerte de input buscador
@@ -48,7 +47,6 @@ function Characters(props) {
   return (
     <div className="Characters">
       <h1>List of Characters</h1>
-
       <section>
         <form onSubmit={(e) => handleSubmit(e)}>
           <input className="search"
@@ -59,26 +57,24 @@ function Characters(props) {
         </form>
       </section>
 
-
       <div className="container-card ">  { /*   container */}
         {
           props.characters ?
             props.characters.map((c) =>
               <div key={c.char_id}>
                 <div to={`/characters/${c.char_id}`}>
-                      <Link to={`/characters/${c.char_id}`}>
-                  <div className="cards ">
-                    <div className="card ">
-                        {c.name}
+                  <Link to={`/characters/${c.char_id}`}>
+                    <div className="cards">
                       <div className="card">
-                        <img src={c.img} />
-                        <div className="death">
-                         {c.estado}</div>
+                        {c.name}
+                        <div className="card">
+                          <img src={c.img} />
+                          <div className="death">
+                            {c.estado}</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                      </Link>
-
+                  </Link>
                 </div>
               </div>
             )

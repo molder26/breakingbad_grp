@@ -1,10 +1,42 @@
-.CharacterDetail {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
+.container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
 }
 
+h1 {
+  text-align: center;
+  margin-top: -5px;
+}
 
-.CharacterDetail__Photo{
-    width: 40%;
+h3 {
+  font-size: 2rem;
+  margin-top: -5px;
+}
+
+.container-episodeDetail {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: -5px;
+}
+
+.season-episode {
+  margin-top: -30px;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  justify-content: space-around;
+}
+
+.card-episode {
+  border: solid 2px white;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.104);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  width: 40rem;
+  height: 28rem;
+  text-align: center;
+  font-size: larger;
 }

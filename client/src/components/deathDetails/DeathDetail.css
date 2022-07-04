@@ -1,0 +1,29 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+h3{
+    text-align: center;
+}
+
+.container-deathDetail{
+    margin: auto;
+    display: flex;
+  flex-direction:column; 
+}
+
+.card{ 
+    border: 2px solid white;
+    border-radius: 6px;    
+}
+
+.size{
+    width: 40rem;
+    height: 15rem;
+    text-align: center;
+    font-size: large;
+}
